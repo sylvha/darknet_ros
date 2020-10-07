@@ -260,18 +260,18 @@ install(
 set(PATH "${CMAKE_CURRENT_SOURCE_DIR}/yolo_network_config/weights")
 set(FILE "${PATH}/yolov2-tiny.weights")
 message(STATUS "Checking and downloading yolov2-tiny.weights if needed ...")
-if (NOT EXISTS "${FILE}")
-  message(STATUS "... file does not exist. Downloading now ...")
-  execute_process(COMMAND wget http://pjreddie.com/media/files/yolov2-tiny.weights -P ${PATH})
-endif()
+#if (NOT EXISTS "${FILE}")
+#  message(STATUS "... file does not exist. Downloading now ...")
+#  execute_process(COMMAND wget http://pjreddie.com/media/files/yolov2-tiny.weights -P ${PATH})
+#endif()
 
 # Download yolov3.weights
 set(FILE "${PATH}/yolov3.weights")
 message(STATUS "Checking and downloading yolov3.weights if needed ...")
-if (NOT EXISTS "${FILE}")
-  message(STATUS "... file does not exist. Downloading now ...")
-  execute_process(COMMAND wget http://pjreddie.com/media/files/yolov3.weights -P ${PATH})
-endif()
+#if (NOT EXISTS "${FILE}")
+#  message(STATUS "... file does not exist. Downloading now ...")
+#  execute_process(COMMAND wget http://pjreddie.com/media/files/yolov3.weights -P ${PATH})
+#endif()
 
 #############
 ## Testing ##
@@ -282,10 +282,10 @@ if(CATKIN_ENABLE_TESTING)
   set(PATH "${CMAKE_CURRENT_SOURCE_DIR}/yolo_network_config/weights")
   set(FILE "${PATH}/yolov2.weights")
   message(STATUS "Checking and downloading yolov2.weights if needed ...")
-  if (NOT EXISTS "${FILE}")
-    message(STATUS "... file does not exist. Downloading now ...")
-    execute_process(COMMAND wget http://pjreddie.com/media/files/yolov2.weights -P ${PATH})
-  endif()
+  #if (NOT EXISTS "${FILE}")
+  #  message(STATUS "... file does not exist. Downloading now ...")
+  #  execute_process(COMMAND wget http://pjreddie.com/media/files/yolov2.weights -P ${PATH})
+  #endif()
 
   find_package(rostest REQUIRED)
 
