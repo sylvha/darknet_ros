@@ -17,4 +17,5 @@ yolo_model:
       - green_circle
       - green_triangle
       - green_cross
+      - docking_signs
 

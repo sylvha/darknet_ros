@@ -37,6 +37,27 @@ void ipl_into_image(IplImage* src, image im)
     }
 }
 
+// void ipl_into_image(IplImage* src, image im)
+// {
+//     IplImage* temp = cvCloneImage(src);
+//     //unsigned char *data = (unsigned char *)src->imageData;
+//     unsigned char *data = (unsigned char *)temp->imageData;
+//     int h = src->height;
+//     int w = src->width;
+//     int c = src->nChannels;
+//     int step = src->widthStep;
+//     int i, j, k;
+
+//     for(i = 0; i < h; ++i){
+//         for(k= 0; k < c; ++k){
+//             for(j = 0; j < w; ++j){
+//                 im.data[k*w*h + i*w + j] = data[i*step + j*c + k]/255.0;
+//             }
+//         }
+//     }
+//     cvReleaseImage(&temp);
+// }
+
 image ipl_to_image(IplImage* src)
 {
     int h = src->height;
@@ -171,18 +192,18 @@ void YoloObjectDetector::init()
 
   nodeHandle_.param("subscribers/camera_reading/topic", cameraTopicName,
                     std::string("/camera/image_raw"));
-  nodeHandle_.param("subscribers/camera_reading/queue_size", cameraQueueSize, 1);
+  nodeHandle_.param("subscribers/camera_reading/queue_size", cameraQueueSize, 10);
   nodeHandle_.param("publishers/object_detector/topic", objectDetectorTopicName,
                     std::string("found_object"));
-  nodeHandle_.param("publishers/object_detector/queue_size", objectDetectorQueueSize, 1);
+  nodeHandle_.param("publishers/object_detector/queue_size", objectDetectorQueueSize, 10);
   nodeHandle_.param("publishers/object_detector/latch", objectDetectorLatch, false);
   nodeHandle_.param("publishers/bounding_boxes/topic", boundingBoxesTopicName,
                     std::string("bounding_boxes"));
-  nodeHandle_.param("publishers/bounding_boxes/queue_size", boundingBoxesQueueSize, 1);
+  nodeHandle_.param("publishers/bounding_boxes/queue_size", boundingBoxesQueueSize, 10);
   nodeHandle_.param("publishers/bounding_boxes/latch", boundingBoxesLatch, false);
   nodeHandle_.param("publishers/detection_image/topic", detectionImageTopicName,
                     std::string("detection_image"));
-  nodeHandle_.param("publishers/detection_image/queue_size", detectionImageQueueSize, 1);
+  nodeHandle_.param("publishers/detection_image/queue_size", detectionImageQueueSize, 10);
   nodeHandle_.param("publishers/detection_image/latch", detectionImageLatch, true);
 
   imageSubscriber_ = imageTransport_.subscribe(cameraTopicName, cameraQueueSize,
